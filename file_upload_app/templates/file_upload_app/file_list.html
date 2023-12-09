@@ -1,0 +1,68 @@
+<!-- file_upload_app/templates/file_upload_app/file_list.html -->
+
+<!-- file_upload_app/templates/file_upload_app/file_list.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Files</title>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            padding: 20px;
+            background-color: #f4f4f4; 
+            background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Light-Blue-HD-Backgrounds.jpg'); /* Set the path to your background image */
+            background-size: cover;
+            background-position: center;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+  <h2>Your Uploaded Files</h2>
+
+  <ul>
+    {% for file in user_files %}
+      <li>{{ file.file.name }} - Uploaded on {{ file.uploaded_at }}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Shared with You</h2>
+
+  <ul>
+    {% for file in shared_files %}
+      <li>{{ file.file.name }} - Uploaded by {{ file.user.username }} on {{ file.uploaded_at }}</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="{% url 'file_upload' %}">Upload more files</a></p>
+
+</body>
+</html>
